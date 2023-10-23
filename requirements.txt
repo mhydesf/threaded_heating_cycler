@@ -1,0 +1,5 @@
+pyyaml
+pandas
+smbus2
+Phidget22
+

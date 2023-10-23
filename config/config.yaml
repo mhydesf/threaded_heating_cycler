@@ -1,0 +1,449 @@
+app:
+    channel_1:
+        enabled: true
+        cycle_no: 0
+        update_rate_s: 1
+        hysteresis: 0.95
+        cool_threshold_C: 30
+        time_warm_s: 180
+        time_cool_s: 10
+        total_cycles: 10000
+        i2c:
+            bus: 22
+            add: 0x1f
+        ssr:
+            pin: 4
+            freq: 50
+        fan:
+            port: 0
+            timeout: 1000
+            channel: 8
+        controller:
+            pid:
+                kp: 30
+                ki: 5
+                kd: 0
+                output_limits:
+                    - 0
+                    - 100
+                p_limits: null
+                i_limits:
+                    - 0
+                    - 25
+                d_limits: null
+            high_setpoint: 80
+            low_setpoint: 0
+            update_rate_s: 0.2
+            minimum_plausible_reading_C: 0
+            maximum_overshoot_C: 10
+            shutoff_temperature_C: 100
+            safe_output_C: 0
+        csv:
+            name: "channel_1"
+            base_path: "/home/pi/heater_cycle_test/csv/channel_1/"
+            cycle_path: "/home/pi/heater_cycle_test/csv/channel_1/cycles/"
+            loop_headers:
+                - timestamp
+                - therm_L_C
+                - therm_R_C
+                - duty_cycle
+                - cycle
+            cycle_headers:
+                - max_temp_C
+                - min_temp_C
+                - ss_temp_C
+                - ss_pwm
+                - cycle
+    channel_2:
+        enabled: true
+        cycle_no: 0
+        update_rate_s: 1
+        hysteresis: 0.95
+        cool_threshold_C: 30
+        time_warm_s: 180
+        time_cool_s: 10
+        total_cycles: 10000
+        i2c:
+            bus: 23
+            add: 0x1f
+        ssr:
+            pin: 27
+            freq: 50
+        fan:
+            port: 0
+            timeout: 1000
+            channel: 9
+        controller:
+            pid:
+                kp: 30
+                ki: 5
+                kd: 0
+                output_limits:
+                    - 0
+                    - 100
+                p_limits: null
+                i_limits:
+                    - 0
+                    - 25
+                d_limits: null
+            high_setpoint: 80
+            low_setpoint: 0
+            update_rate_s: 0.2
+            minimum_plausible_reading_C: 0
+            maximum_overshoot_C: 10
+            shutoff_temperature_C: 100
+            safe_output_C: 0
+        csv:
+            name: "channel_2"
+            base_path: "/home/pi/heater_cycle_test/csv/channel_2/"
+            cycle_path: "/home/pi/heater_cycle_test/csv/channel_2/cycles/"
+            loop_headers:
+                - timestamp
+                - therm_L_C
+                - therm_R_C
+                - duty_cycle
+                - cycle
+            cycle_headers:
+                - max_temp_C
+                - min_temp_C
+                - ss_temp_C
+                - ss_pwm
+                - cycle
+    channel_3:
+        enabled: true
+        cycle_no: 0
+        update_rate_s: 1
+        hysteresis: 0.95
+        cool_threshold_C: 30
+        time_warm_s: 180
+        time_cool_s: 10
+        total_cycles: 10000
+        i2c:
+            bus: 24
+            add: 0x1f
+        ssr:
+            pin: 21
+            freq: 50
+        fan:
+            port: 0
+            timeout: 1000
+            channel: 10
+        controller:
+            pid:
+                kp: 30
+                ki: 5
+                kd: 0
+                output_limits:
+                    - 0
+                    - 100
+                p_limits: null
+                i_limits:
+                    - 0
+                    - 25
+                d_limits: null
+            high_setpoint: 80
+            low_setpoint: 0
+            update_rate_s: 0.2
+            minimum_plausible_reading_C: 0
+            maximum_overshoot_C: 10
+            shutoff_temperature_C: 100
+            safe_output_C: 0
+        csv:
+            name: "channel_3"
+            base_path: "/home/pi/heater_cycle_test/csv/channel_3/"
+            cycle_path: "/home/pi/heater_cycle_test/csv/channel_3/cycles/"
+            loop_headers:
+                - timestamp
+                - therm_L_C
+                - therm_R_C
+                - duty_cycle
+                - cycle
+            cycle_headers:
+                - max_temp_C
+                - min_temp_C
+                - ss_temp_C
+                - ss_pwm
+                - cycle
+    channel_4:
+        enabled: true
+        cycle_no: 0
+        update_rate_s: 1
+        hysteresis: 0.95
+        cool_threshold_C: 30
+        time_warm_s: 180
+        time_cool_s: 10
+        total_cycles: 10000
+        i2c:
+            bus: 25
+            add: 0x1f
+        ssr:
+            pin: 13
+            freq: 50
+        fan:
+            port: 0
+            timeout: 1000
+            channel: 11
+        controller:
+            pid:
+                kp: 30
+                ki: 5
+                kd: 0
+                output_limits:
+                    - 0
+                    - 100
+                p_limits: null
+                i_limits:
+                    - 0
+                    - 25
+                d_limits: null
+            high_setpoint: 80
+            low_setpoint: 0
+            update_rate_s: 0.2
+            minimum_plausible_reading_C: 0
+            maximum_overshoot_C: 10
+            shutoff_temperature_C: 100
+            safe_output_C: 0
+        csv:
+            name: "channel_4"
+            base_path: "/home/pi/heater_cycle_test/csv/channel_4/"
+            cycle_path: "/home/pi/heater_cycle_test/csv/channel_4/cycles/"
+            loop_headers:
+                - timestamp
+                - therm_L_C
+                - therm_R_C
+                - duty_cycle
+                - cycle
+            cycle_headers:
+                - max_temp_C
+                - min_temp_C
+                - ss_temp_C
+                - ss_pwm
+                - cycle
+    channel_5:
+        enabled: true
+        cycle_no: 0
+        update_rate_s: 1
+        hysteresis: 0.95
+        cool_threshold_C: 30
+        time_warm_s: 180
+        time_cool_s: 10
+        total_cycles: 10000
+        i2c:
+            bus: 26
+            add: 0x1f
+        ssr:
+            pin: 26
+            freq: 50
+        fan:
+            port: 0
+            timeout: 1000
+            channel: 12
+        controller:
+            pid:
+                kp: 30
+                ki: 5
+                kd: 0
+                output_limits:
+                    - 0
+                    - 100
+                p_limits: null
+                i_limits:
+                    - 0
+                    - 25
+                d_limits: null
+            high_setpoint: 80
+            low_setpoint: 0
+            update_rate_s: 0.2
+            minimum_plausible_reading_C: 0
+            maximum_overshoot_C: 10
+            shutoff_temperature_C: 100
+            safe_output_C: 0
+        csv:
+            name: "channel_5"
+            base_path: "/home/pi/heater_cycle_test/csv/channel_5/"
+            cycle_path: "/home/pi/heater_cycle_test/csv/channel_5/cycles/"
+            loop_headers:
+                - timestamp
+                - therm_L_C
+                - therm_R_C
+                - duty_cycle
+                - cycle
+            cycle_headers:
+                - max_temp_C
+                - min_temp_C
+                - ss_temp_C
+                - ss_pwm
+                - cycle
+    channel_6:
+        enabled: true
+        cycle_no: 0
+        update_rate_s: 1
+        hysteresis: 0.95
+        cool_threshold_C: 30
+        time_warm_s: 180
+        time_cool_s: 10
+        total_cycles: 10000
+        i2c:
+            bus: 27
+            add: 0x1f
+        ssr:
+            pin: 12
+            freq: 50
+        fan:
+            port: 0
+            timeout: 1000
+            channel: 13
+        controller:
+            pid:
+                kp: 30
+                ki: 5
+                kd: 0
+                output_limits:
+                    - 0
+                    - 100
+                p_limits: null
+                i_limits:
+                    - 0
+                    - 25
+                d_limits: null
+            high_setpoint: 80
+            low_setpoint: 0
+            update_rate_s: 0.2
+            minimum_plausible_reading_C: 0
+            maximum_overshoot_C: 10
+            shutoff_temperature_C: 100
+            safe_output_C: 0
+        csv:
+            name: "channel_6"
+            base_path: "/home/pi/heater_cycle_test/csv/channel_6/"
+            cycle_path: "/home/pi/heater_cycle_test/csv/channel_6/cycles/"
+            loop_headers:
+                - timestamp
+                - therm_L_C
+                - therm_R_C
+                - duty_cycle
+                - cycle
+            cycle_headers:
+                - max_temp_C
+                - min_temp_C
+                - ss_temp_C
+                - ss_pwm
+                - cycle
+    channel_7:
+        enabled: true
+        cycle_no: 0
+        update_rate_s: 1
+        hysteresis: 0.95
+        cool_threshold_C: 30
+        time_warm_s: 180
+        time_cool_s: 10
+        total_cycles: 10000
+        i2c:
+            bus: 28
+            add: 0x1f
+        ssr:
+            pin: 20
+            freq: 50
+        fan:
+            port: 0
+            timeout: 1000
+            channel: 14
+        controller:
+            pid:
+                kp: 30
+                ki: 5
+                kd: 0
+                output_limits:
+                    - 0
+                    - 100
+                p_limits: null
+                i_limits:
+                    - 0
+                    - 25
+                d_limits: null
+            high_setpoint: 80
+            low_setpoint: 0
+            update_rate_s: 0.2
+            minimum_plausible_reading_C: 0
+            maximum_overshoot_C: 10
+            shutoff_temperature_C: 100
+            safe_output_C: 0
+        csv:
+            name: "channel_7"
+            base_path: "/home/pi/heater_cycle_test/csv/channel_7/"
+            cycle_path: "/home/pi/heater_cycle_test/csv/channel_7/cycles/"
+            loop_headers:
+                - timestamp
+                - therm_L_C
+                - therm_R_C
+                - duty_cycle
+                - cycle
+            cycle_headers:
+                - max_temp_C
+                - min_temp_C
+                - ss_temp_C
+                - ss_pwm
+                - cycle
+    channel_8:
+        enabled: false
+        cycle_no: 0
+        update_rate_s: 1
+        hysteresis: 0.95
+        cool_threshold_C: 30
+        time_warm_s: 180
+        time_cool_s: 10
+        total_cycles: 10000
+        i2c:
+            bus: 29
+            add: 0x1f
+        ssr:
+            pin: 19
+            freq: 50
+        fan:
+            port: 0
+            timeout: 1000
+            channel: 15
+        controller:
+            pid:
+                kp: 30
+                ki: 5
+                kd: 0
+                output_limits:
+                    - 0
+                    - 100
+                p_limits: null
+                i_limits:
+                    - 0
+                    - 25
+                d_limits: null
+            high_setpoint: 80
+            low_setpoint: 0
+            update_rate_s: 0.2
+            minimum_plausible_reading_C: 0
+            maximum_overshoot_C: 10
+            shutoff_temperature_C: 100
+            safe_output_C: 0
+        csv:
+            name: "channel_8"
+            base_path: "/home/pi/heater_cycle_test/csv/channel_8/"
+            cycle_path: "/home/pi/heater_cycle_test/csv/channel_8/cycles/"
+            loop_headers:
+                - timestamp
+                - therm_L_C
+                - therm_R_C
+                - duty_cycle
+                - cycle
+            cycle_headers:
+                - max_temp_C
+                - min_temp_C
+                - ss_temp_C
+                - ss_pwm
+                - cycle
+log:
+  name: "HeaterFrameCycling"
+  directory: "/home/pi/heater_cycle_test/log/"
+  level: 10
+  suffix: "%Y-%m-%d"
+  file_name: "{name}-{date:%Y-%m-%d}.log"
+  format: "%(asctime)s [%(name)s, %(filename)s:%(lineno)d] %(message)s"
+
