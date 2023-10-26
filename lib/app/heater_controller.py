@@ -102,17 +102,6 @@ class HeaterController(Generic[OutputType]):
             )
             return self.safe_output
         if temperature_C - self.setpoint_C > self.maximum_overshoot_C:
-            self.logger.warning(
-                (
-                    "Temperature exceeds overshoot above set point: "
-                    "{:.1f} > {:.1f} + {:.1f}. Switching to safe output of {:.3f}."
-                ).format(
-                    temperature_C,
-                    self.setpoint_C,
-                    self.maximum_overshoot_C,
-                    self.safe_output,
-                )
-            )
             return self.safe_output
         return self.pid(temperature_C, self.setpoint_C)
 

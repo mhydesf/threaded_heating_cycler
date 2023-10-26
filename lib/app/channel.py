@@ -78,6 +78,7 @@ class Channel:
         self.pid_thread = threading.Thread(target=self.heater_controller.run)
 
         self.ch_cancel = threading.Event()
+        self.ch_pause = threading.Event()
         
         self.fan_controller.register_channel(self.fan_channel)
 
@@ -130,6 +131,7 @@ class Channel:
                         self.steady_state = SteadyState.NO
                         self.steady_state_start = 0.0
                         self.steady_state_duration = 0.0
+                        self.wait_for_pause()
                         self.heater_controller.set_setpoint(self.high_setpoint_C)
                         self.logger.info(f"Channel {self.channel} beginning heating cycle")
                 else:
@@ -140,10 +142,10 @@ class Channel:
                 raise RuntimeError("Invalid heating state - killing thread")
 
             self.log_cy_data(temps)
-
             self.rate_sleep(self.update_rate_s)
 
         self.logger.info("closing thread")
+        self.abort()
     
     def rate_sleep(self, period_s: float) -> None:
         time_since_last_update_s = time.time() - self.last_rate_update
@@ -153,11 +155,31 @@ class Channel:
 
         self.last_rate_update = time.time()
 
+    def start(self) -> None:
+        self.ch_thread.start()
+
+    def join(self) -> None:
+        self.ch_thread.join()
+
     def abort(self) -> None:
         self.logger.info(f"Channel {self.channel} aborting")
+        self.fan_controller.turn_off(self.fan_channel)
         self.heater_controller.abort()
         self.pid_thread.join()
         self.ch_cancel.set()
+
+    def pause(self) -> None:
+        self.logger.info(f"Setting pause flag on channel {self.channel}")
+        self.ch_pause.set()
+
+    def unpause(self) -> None:
+        self.logger.info(f"Clearing pause flag on channel {self.channel}")
+        self.ch_pause.clear()
+
+    def wait_for_pause(self) -> None:
+        self.logger.info(f"Channel {self.channel} waiting for pause to clear")
+        while self.ch_pause.is_set():
+            self.rate_sleep(self.update_rate_s)
 
     def log_cy_data(self, temps: List[float]) -> None:
         cy_data = DataPoint(
@@ -200,6 +222,15 @@ class Channel:
         config.app[f"channel_{self.channel}"]["cycle_no"] = self.cycle_no
         config.save("/home/pi/heater_cycle_test/config/config.yaml")
         self.logger.info(f"Updated cycle_no for channel{self.channel} in config.yaml")
+
+    def get_temps(self) -> List[int]:
+        return self.heater_controller.get_temps()
+
+    def get_duty_cycle(self) -> int:
+        return self.heater_controller.get_dc()
+
+    def get_cycle_number(self) -> int:
+        return self.cycle_no
 
 
 def CreateChannel(

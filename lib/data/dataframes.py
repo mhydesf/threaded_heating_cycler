@@ -19,7 +19,8 @@ class Frame:
         self.full_path = ""
 
     def add_row(self, data: namedtuple) -> None:
-        self.df = self.df.append(data._asdict(), ignore_index=True)
+        tmp_df = pd.DataFrame([data._asdict()])
+        self.df = pd.concat([self.df, tmp_df], axis=0, ignore_index=True)
 
     def load(self) -> None:
         if os.path.exists(self.full_path):

@@ -37,6 +37,7 @@ class REL1101:
         ch.setChannel(channel)
         ch.openWaitForAttachment(self.timeout)
         self.channels[channel] = ch
+        self.channels[channel].setDutyCycle(0)
 
     def turn_on(self, fan_channel: int) -> None:
         try:
@@ -53,37 +54,4 @@ class REL1101:
                 self.logger.info(f"Turned off relay channel {fan_channel}")
         except PhidgetException as e:
             self.logger.error(f"Error turning off relay channel {fan_channel}: {e.details}")
-
-
-if __name__ == "__main__":
-    import time
-    from config.config import Config
-
-    config = Config.from_file("/home/pi/heater_cycle_test/config/config.yaml")
-    config.merge(config)
-    logger = LoggerManager.get_logger(config.log)  
-
-    sing = REL1101(logger, 0, 1000)
-    sing.register_channel(0)
-    sing.register_channel(1)
-    sing.register_channel(2)
-    sing.register_channel(3)
-    sing.register_channel(4)
-    sing.register_channel(5)
-    sing.register_channel(6)
-    sing.register_channel(7)
-    sing.register_channel(8)
-    sing.register_channel(9)
-    sing.register_channel(10)
-    sing.register_channel(11)
-    sing.register_channel(12)
-    sing.register_channel(13)
-    sing.register_channel(14)
-    sing.register_channel(15)
-    
-    for i in range(16):
-        sing.turn_on(i)
-
-    while True:
-        time.sleep(1)
 
