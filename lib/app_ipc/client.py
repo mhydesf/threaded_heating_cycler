@@ -28,10 +28,3 @@ class Client:
         rep_payload: RepPayload = json.loads(resp)
         return rep_payload
 
-
-if __name__ == "__main__":
-    cli = Client()
-    print(cli.send_request(command="get_state"))
-    print(cli.send_request(command="set_state", args={"state": "running"}))
-    print(cli.send_request(command="get_state"))
-

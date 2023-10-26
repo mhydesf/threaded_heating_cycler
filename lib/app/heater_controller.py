@@ -39,9 +39,9 @@ class HeaterController(Generic[OutputType]):
         self.time_of_last_sleep = time.monotonic()
         self.reading_timeout_s = 20
 
-        self.setpoint_C = None
-        self.temps_C = [0, 0]
-        self.dc = 0
+        self.setpoint_C: float = None
+        self.temps_C: List[float] = [0, 0]
+        self.dc: int = 0
 
         self.setpoint_mtx = Lock()
         self.temp_mtx = Lock()

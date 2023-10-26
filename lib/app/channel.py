@@ -50,7 +50,7 @@ class Channel:
         self.logger = logger
         self.channel = channel
         self.heater_controller = heater_controller
-        self.fan_controller = fan_controller
+        self.fan_controller= fan_controller
         self.fan_channel = fan_channel
         self.high_setpoint_C = high_setpoint_C
         self.low_setpoint_C = low_setpoint_C
@@ -62,9 +62,9 @@ class Channel:
         self.time_cool_s = time_cool_s
         self.total_cycles = total_cycles
 
-        self.last_rate_update = 0.0
-        self.steady_state_start = 0.0
-        self.steady_state_duration = 0.0
+        self.last_rate_update: float = 0.0
+        self.steady_state_start: float = 0.0
+        self.steady_state_duration: float = 0.0
         self.heating_state = HeatingState.HEATING
         self.steady_state = SteadyState.NO
 
@@ -177,7 +177,8 @@ class Channel:
         self.ch_pause.clear()
 
     def wait_for_pause(self) -> None:
-        self.logger.info(f"Channel {self.channel} waiting for pause to clear")
+        if self.ch_pause.is_set():
+            self.logger.info(f"Channel {self.channel} waiting for pause to clear")
         while self.ch_pause.is_set():
             self.rate_sleep(self.update_rate_s)
 
